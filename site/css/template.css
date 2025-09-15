@@ -10,9 +10,10 @@
 
     
 .image-container {
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: var(--gap);      
 }
 
 .image-container img {
@@ -30,4 +31,5 @@ h1 {
     text-align: center;
     
 }
+
 
