@@ -1,24 +1,31 @@
 :root {
-  --bg: #1e1e2f;
-  --text: #e4e4e7;
-  --accent: #ffb86c;
-  --secondary: #8be9fd;
-  --overlay: #6272a4;
-  --alert: #ff5555;
+  --bg: #1b1b1f;
+  --text: #f5f5f5;
+  --accent: #e63946;
+  --secondary: #ff7f50;
+  --overlay: #2c2a36;
+  --alert: #ff4c4c;
+  --highlight: #fca311;
   --gap: 20px;
 }
 
     
 .image-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: var(--gap);      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    flex-wrap: wrap;
+    margin: 20px 0;
 }
 
 .image-container img {
-    max-height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    height: auto;
 }
+
 
 body {
     font-family: Arial, sans-serif;
@@ -31,5 +38,6 @@ h1 {
     text-align: center;
     
 }
+
 
 
