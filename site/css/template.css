@@ -1,8 +1,18 @@
+:root {
+  --bg: #1e1e2f;
+  --text: #e4e4e7;
+  --accent: #ffb86c;
+  --secondary: #8be9fd;
+  --overlay: #6272a4;
+  --alert: #ff5555;
+  --gap: 20px;
+}
 
+    
 .image-container {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: var(--gap);
 }
 
 .image-container img {
@@ -11,10 +21,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff;
+    background: var(--bg);
     margin: 20px;
 }
 
 h1 {
-    color: #aa0000;
+    color: var(--text);
+    text-align: center;
+    
 }
+
