@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #111; 
+    background: #111;
 }
 
 h1 {
@@ -17,25 +17,20 @@ h1 {
     width: 90%;
     max-width: 1200px;
     height: 600px;
-    overflow: visible; 
+    overflow: hidden; /* importante: così il drag funziona solo dentro il wrapper */
     background: transparent;
 }
 
 #map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80%;      
+    width: 100%; /* dimensione iniziale contenuta */
     height: auto;
-    transform: translate(-50%, -50%) scale(1);
     cursor: grab;
     user-select: none;
     touch-action: none;
-    transition: transform 0.2s ease;
+    transform: translate(0,0) scale(1); /* posizione iniziale */
 }
 
 #map.dragging {
     cursor: grabbing;
-    transition: none;
 }
 
