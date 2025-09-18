@@ -1,23 +1,15 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    background: #202020;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .map-container {
     width: 80%;
+    max-width: 1200px;
     height: 500px;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
     border: 2px solid #ccc;
     background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .map-container img {
@@ -30,8 +22,12 @@ html, body {
     cursor: grab;
     border-radius: 10px;
     transition: transform 0.2s ease;
+    user-select: none;
+    touch-action: none;
 }
 
 .map-container img.dragging {
     cursor: grabbing;
+    transition: none;
 }
+
