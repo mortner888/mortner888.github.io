@@ -1,4 +1,30 @@
-body {
+:root { 
+	--bg: #1b1b1f; 
+	--text: #f5f5f5; 
+	--accent: #e63946; 
+	--secondary: #ff7f50; 
+	--overlay: #2c2a36; 
+	--alert: #ff4c4c; 
+	--highlight: #fca311; 
+	--gap: 20px; 
+  } 
+
+
+@font-face {
+  font-family: 'TrajanPro';
+  src: url('../font/TrajanPro-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+  
+  h1 { 
+	text-align: center;
+	font-family: 'TrajanPro', serif; 
+	
+  }
+  
+  body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,19 +37,23 @@ h1 {
     margin: 20px 0;
     color: #fff;
     text-align: center;
+    z-index: 10; /* assicura che stia sopra la mappa */
+    position: relative;
 }
 
 .map-wrapper {
     width: 90%;
     max-width: 1200px;
-    overflow: hidden;
+    overflow: hidden; /* la mappa resta dentro il wrapper */
     background: transparent;
 }
 
 #map {
-    width: 60%;       
+    width: 100%; /* dimensione iniziale */
     height: auto;
-    transform: scale(1); 
+    transform: scale(1); /* zoom iniziale */
     transition: transform 0.1s ease-out;
-    cursor: default;   
+    cursor: default; /* niente drag */
+    display: block;  /* evita comportamenti inline */
+    pointer-events: auto; /* permettere zoom ma non drag */
 }
