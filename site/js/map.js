@@ -1,10 +1,8 @@
 const map = document.getElementById('map');
 
 let isDragging = false;
-let startX = 0;
-let startY = 0;
-let currentX = 0;
-let currentY = 0;
+let startX = 0, startY = 0;
+let currentX = 0, currentY = 0;
 let scale = 1;
 
 map.addEventListener('mousedown', e => {
