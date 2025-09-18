@@ -7,13 +7,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+@font-face {
+    font-family: 'TrajanPro';
+    src: url('site/font/TrajanPro-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 h1 {
-    margin: 20px 0;
+    font-family: 'TrajanPro', serif;
     text-align: center;
-    z-index: 10;
-    position: relative;
+    color: #fff;
+}
 }
 
 .map-wrapper {
@@ -34,5 +40,6 @@ h1 {
     pointer-events: auto;
     user-select: none;
 }
+
 
 
