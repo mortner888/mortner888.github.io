@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const map = document.getElementById('map');
-    let scale = 1;
+    let scale = 0.5
     let originX = 0;
     let originY = 0;
 

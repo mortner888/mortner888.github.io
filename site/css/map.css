@@ -37,22 +37,21 @@ h1 {
 .map-wrapper {
     width: 90%;
     max-width: 1200px;
-    height: auto;
-    overflow: hidden;
+    height: 500px;       /* altezza fissa o proporzionale */
+    overflow: hidden;    
+    margin: 20px auto;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
 }
 
 #map {
-    width: 80%; 
+    max-width: none;     /* rimuove limitazioni di width/height */
+    width: auto;         /* la dimensione iniziale la controlliamo con scale */
     height: auto;
-    transform-origin: center center;
-    transform: scale(1);
+    transform: scale(0.5);  /* scala iniziale ridotta */
+    transform-origin: 0 0;  /* lo zoom partirà dal cursore */
     display: block;
     cursor: default;
-    pointer-events: auto;
-    max-width: 100%;
-    max-height: 100%;
 }
