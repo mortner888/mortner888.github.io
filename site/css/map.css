@@ -5,11 +5,14 @@ body {
     flex-direction: column;
     align-items: center;
     background: #111;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 h1 {
     margin: 20px 0;
     color: #fff;
+    text-align: center;
 }
 
 .map-wrapper {
@@ -17,20 +20,22 @@ h1 {
     width: 90%;
     max-width: 1200px;
     height: 600px;
-    overflow: hidden; /* importante: così il drag funziona solo dentro il wrapper */
+    overflow: hidden; /* il drag resta dentro il wrapper */
     background: transparent;
+    touch-action: none;
 }
 
 #map {
-    width: 100%; /* dimensione iniziale contenuta */
+    width: 100%;       /* dimensione iniziale gestibile */
     height: auto;
     cursor: grab;
     user-select: none;
-    touch-action: none;
-    transform: translate(0,0) scale(1); /* posizione iniziale */
+    transform: translate(0px, 0px) scale(1);
+    transition: transform 0.1s ease-out;
 }
 
 #map.dragging {
     cursor: grabbing;
+    transition: none;
 }
 
