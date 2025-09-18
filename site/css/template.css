@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'TrajanPro';
-  src: url('../font/TrajanPro-Regular.ttf') format('truetype');
+  src: url('../font/TrajanPro-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   }
@@ -63,4 +63,5 @@
   .image-table img.table-image:hover {
 	transform: scale(1.1);
 	cursor: pointer;
+
   }
