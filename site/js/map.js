@@ -1,4 +1,4 @@
-const map = document.getElementById('map');
+const map = document.querySelector('.map-container img');
 
 let isDragging = false;
 let startX = 0, startY = 0;

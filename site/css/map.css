@@ -10,14 +10,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* titolo sopra mappa */
 }
 
 .map-container img {
+    max-width: 100%;
+    max-height: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 50%;
-    height: auto;
     transform: translate(-50%, -50%) scale(1);
     cursor: grab;
     border-radius: 10px;
