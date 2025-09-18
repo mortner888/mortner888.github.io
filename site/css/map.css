@@ -10,7 +10,7 @@ body {
 
 @font-face {
     font-family: 'TrajanPro';
-    src: url('site/font/TrajanPro-Regular.woff2') format('woff2');
+    src: url('../font/TrajanPro-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -39,6 +39,7 @@ h1 {
     pointer-events: auto;
     user-select: none;
 }
+
 
 
 
