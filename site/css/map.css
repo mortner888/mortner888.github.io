@@ -1,34 +1,32 @@
 .map-container {
-    width: 80%;
-    max-width: 1200px;
-    height: 500px;
+    width: 100%; 
+    height: auto; 
     position: relative;
-    overflow: hidden;
-    border-radius: 0;
-    border: none;
+    overflow: visible; 
+    border: none; 
     background: transparent; 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; 
+    flex-direction: column; 
 }
 
+.map-container h1 {
+    margin-bottom: 10px; 
+    text-align: center;
+}
 
 .map-container img {
     max-width: 100%;
-    max-height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    height: auto; 
     cursor: grab;
-    border-radius: 10px;
-    transition: transform 0.2s ease;
     user-select: none;
     touch-action: none;
+    border-radius: 0; 
 }
 
 .map-container img.dragging {
     cursor: grabbing;
-    transition: none;
 }
+
 
