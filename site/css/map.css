@@ -37,23 +37,21 @@ h1 {
     margin: 20px 0;
     color: #fff;
     text-align: center;
-    z-index: 10; /* assicura che stia sopra la mappa */
+    z-index: 10; 
     position: relative;
 }
 
 .map-wrapper {
     width: 90%;
     max-width: 1200px;
-    overflow: hidden; /* la mappa resta dentro il wrapper */
+    overflow: visible;
     background: transparent;
 }
 
 #map {
-    width: 100%; /* dimensione iniziale */
+    width: 100%;
     height: auto;
-    transform: scale(1); /* zoom iniziale */
-    transition: transform 0.1s ease-out;
-    cursor: default; /* niente drag */
-    display: block;  /* evita comportamenti inline */
-    pointer-events: auto; /* permettere zoom ma non drag */
+    transform-origin: center center; /* zoom dal centro */
+    transform: scale(1);
+    margin: 40px; /* crea spazio visivo intorno */
 }
