@@ -1,28 +1,3 @@
-@font-face {
-    font-family: 'TrajanPro';
-    src: url('../font/TrajanPro-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: #111;
-    color: #fff;
-    font-family: 'TrajanPro', serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 {
-    font-family: 'TrajanPro', serif;
-    text-align: center;
-    color: #fff;
-    margin: 20px 0;
-}
-
 .map-wrapper {
     width: 95%;
     max-width: 1400px;
@@ -50,6 +25,7 @@ h1 {
     pointer-events: auto;
     user-select: none;
 }
+
 
 
 
