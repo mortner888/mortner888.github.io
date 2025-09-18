@@ -3,18 +3,27 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow: hidden;
+    width: 80%;
+    height: 500px;
+    border: 2px solid #ccc;
+    position: relative;
+    background: #f0f0f0;
 }
 
 .map-container img {
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    max-width: 100%;
+    max-width: none;
+    width: 100%;
     height: auto;
-    transition: transform 0.3s ease;
+    cursor: grab;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s ease;
 }
 
-
-.map-container img:hover {
-    transform: scale(1.05);
-    cursor: grab;
+.map-container img.dragging {
+    cursor: grabbing;
 }
