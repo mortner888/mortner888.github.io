@@ -1,0 +1,20 @@
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.map-container img {
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+
+.map-container img:hover {
+    transform: scale(1.05);
+    cursor: grab;
+}
