@@ -6,7 +6,9 @@ let isDragging = false;
 let startX = 0;
 let startY = 0;
 
-// Dimensioni iniziali dell'immagine renderizzata
+const MIN_SCALE = 0.8;
+const MAX_SCALE = 3;
+
 let baseWidth, baseHeight;
 
 window.addEventListener('load', () => {
@@ -17,14 +19,12 @@ window.addEventListener('load', () => {
     updateTransform();
 });
 
-// Centra la mappa inizialmente
 function centerMap() {
     const wrapper = map.parentElement.getBoundingClientRect();
     originX = (wrapper.width - baseWidth) / 2;
     originY = (wrapper.height - baseHeight) / 2;
 }
 
-// Applica i limiti e centra se più piccola del wrapper
 function applyLimits() {
     const wrapper = map.parentElement.getBoundingClientRect();
     const scaledWidth = baseWidth * scale;
@@ -47,14 +47,11 @@ function applyLimits() {
     }
 }
 
-// Aggiorna il transform
 function updateTransform() {
     map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
 }
 
 // ----------------- ZOOM -------------------
-
-// Zoom con rotellina del mouse
 map.addEventListener('wheel', e => {
     e.preventDefault();
     const rect = map.getBoundingClientRect();
@@ -63,7 +60,7 @@ map.addEventListener('wheel', e => {
 
     const zoomIntensity = 0.1;
     const delta = e.deltaY < 0 ? zoomIntensity : -zoomIntensity;
-    const newScale = Math.max(0.5, Math.min(3, scale + delta));
+    const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale + delta));
     const scaleRatio = newScale / scale;
 
     originX = originX - mouseX * (scaleRatio - 1);
@@ -74,7 +71,6 @@ map.addEventListener('wheel', e => {
     updateTransform();
 });
 
-// Zoom con doppio click
 map.addEventListener('dblclick', e => {
     e.preventDefault();
     const rect = map.getBoundingClientRect();
@@ -84,6 +80,7 @@ map.addEventListener('dblclick', e => {
     const zoomFactor = 1.5;
     const prevScale = scale;
     scale = (scale >= 1.5) ? 1 : scale * zoomFactor;
+    scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale));
 
     originX = originX - (clickX * (scale / prevScale - 1));
     originY = originY - (clickY * (scale / prevScale - 1));
@@ -92,7 +89,7 @@ map.addEventListener('dblclick', e => {
     updateTransform();
 });
 
-// Pinch touch
+// ----------------- PINCH TOUCH -------------------
 let lastTouchDist = null;
 
 map.addEventListener('touchstart', e => {
@@ -113,7 +110,7 @@ map.addEventListener('touchmove', e => {
         const centerY = (e.touches[0].clientY + e.touches[1].clientY)/2 - rect.top;
 
         const dist = getTouchDist(e.touches);
-        const newScale = Math.max(0.5, Math.min(3, scale * (dist / lastTouchDist)));
+        const newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * (dist / lastTouchDist)));
         const scaleRatio = newScale / scale;
 
         originX = originX - (centerX * (scaleRatio - 1));
@@ -156,9 +153,10 @@ document.addEventListener('mouseup', () => {
     isDragging = false;
 });
 
-// ----------------- UTILITY -----------------
+// ----------------- UTILITY -------------------
 function getTouchDist(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
     return Math.hypot(dx, dy);
 }
+
