@@ -4,6 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #111; 
 }
 
 h1 {
@@ -14,8 +15,8 @@ h1 {
 .map-wrapper {
     position: relative;
     width: 100%;
-    height: auto;
-    overflow: visible;
+    height: auto; 
+    overflow: visible; 
 }
 
 #map {
@@ -29,5 +30,4 @@ h1 {
 #map.dragging {
     cursor: grabbing;
 }
-
 
