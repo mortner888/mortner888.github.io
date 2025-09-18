@@ -3,6 +3,7 @@ let scale = 1;
 let originX = 0;
 let originY = 0;
 
+// Applica i limiti e centra la mappa se troppo piccola
 function applyLimits() {
     const wrapper = map.parentElement.getBoundingClientRect();
     const mapRect = {
@@ -13,13 +14,21 @@ function applyLimits() {
     const scaledWidth = mapRect.width * scale;
     const scaledHeight = mapRect.height * scale;
 
-    const minX = wrapper.width - scaledWidth;
-    const maxX = 0;
-    const minY = wrapper.height - scaledHeight;
-    const maxY = 0;
+    if (scaledWidth < wrapper.width) {
+        originX = (wrapper.width - scaledWidth) / 2;
+    } else {
+        const minX = wrapper.width - scaledWidth;
+        const maxX = 0;
+        originX = Math.min(maxX, Math.max(minX, originX));
+    }
 
-    originX = Math.min(maxX, Math.max(minX, originX));
-    originY = Math.min(maxY, Math.max(minY, originY));
+    if (scaledHeight < wrapper.height) {
+        originY = (wrapper.height - scaledHeight) / 2;
+    } else {
+        const minY = wrapper.height - scaledHeight;
+        const maxY = 0;
+        originY = Math.min(maxY, Math.max(minY, originY));
+    }
 }
 
 // Zoom con rotellina del mouse
@@ -77,6 +86,7 @@ map.addEventListener('touchend', e => {
     if (e.touches.length < 2) lastTouchDist = null;
 });
 
+// Calcola la distanza tra due tocchi
 function getTouchDist(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
