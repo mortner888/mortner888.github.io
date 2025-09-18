@@ -6,14 +6,12 @@ let originY = 0;
 // Applica i limiti e centra la mappa se troppo piccola
 function applyLimits() {
     const wrapper = map.parentElement.getBoundingClientRect();
-    const mapRect = {
-        width: map.naturalWidth,
-        height: map.naturalHeight
-    };
+    const mapRect = map.getBoundingClientRect();
 
-    const scaledWidth = mapRect.width * scale;
-    const scaledHeight = mapRect.height * scale;
+    const scaledWidth = mapRect.width;
+    const scaledHeight = mapRect.height;
 
+    // Se la mappa è più piccola del wrapper, centrala
     if (scaledWidth < wrapper.width) {
         originX = (wrapper.width - scaledWidth) / 2;
     } else {
@@ -30,6 +28,7 @@ function applyLimits() {
         originY = Math.min(maxY, Math.max(minY, originY));
     }
 }
+
 
 // Zoom con rotellina del mouse
 map.addEventListener('wheel', e => {
