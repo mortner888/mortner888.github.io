@@ -69,6 +69,26 @@ map.addEventListener('wheel', e => {
     updateTransform();
 });
 
+map.addEventListener('dblclick', e => {
+    e.preventDefault();
+    const rect = map.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    const zoomFactor = 1.5; // quanto zooma ad ogni doppio click
+    const prevScale = scale;
+
+    // Toggle: se siamo già zoomati sopra 1, torna a 1, altrimenti aumenta
+    scale = (scale >= 1.5) ? 1 : scale * zoomFactor;
+
+    // Calcolo il nuovo originX/Y in modo da zoomare sul punto cliccato
+    originX = originX - (clickX * (scale / prevScale - 1));
+    originY = originY - (clickY * (scale / prevScale - 1));
+
+    applyLimits();
+    updateTransform();
+});
+
 // Pinch touch
 let lastTouchDist = null;
 
