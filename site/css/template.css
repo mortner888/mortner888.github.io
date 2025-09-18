@@ -38,6 +38,7 @@
   .table-wrapper {
 	display: flex;
 	justify-content: center;
+	gap: 8px;
   }
   
   .image-table img.table-image {
@@ -55,3 +56,4 @@
   }
 
   
+
