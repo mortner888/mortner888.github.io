@@ -2,6 +2,9 @@ const map = document.getElementById('map');
 let scale = 1;
 let originX = 0;
 let originY = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
 
 // Dimensioni iniziali dell'immagine renderizzata
 let baseWidth, baseHeight;
@@ -49,7 +52,9 @@ function updateTransform() {
     map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
 }
 
-// Zoom con rotellina
+// ----------------- ZOOM -------------------
+
+// Zoom con rotellina del mouse
 map.addEventListener('wheel', e => {
     e.preventDefault();
     const rect = map.getBoundingClientRect();
@@ -69,19 +74,17 @@ map.addEventListener('wheel', e => {
     updateTransform();
 });
 
+// Zoom con doppio click
 map.addEventListener('dblclick', e => {
     e.preventDefault();
     const rect = map.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const clickY = e.clientY - rect.top;
 
-    const zoomFactor = 1.5; // quanto zooma ad ogni doppio click
+    const zoomFactor = 1.5;
     const prevScale = scale;
-
-    // Toggle: se siamo già zoomati sopra 1, torna a 1, altrimenti aumenta
     scale = (scale >= 1.5) ? 1 : scale * zoomFactor;
 
-    // Calcolo il nuovo originX/Y in modo da zoomare sul punto cliccato
     originX = originX - (clickX * (scale / prevScale - 1));
     originY = originY - (clickY * (scale / prevScale - 1));
 
@@ -95,6 +98,10 @@ let lastTouchDist = null;
 map.addEventListener('touchstart', e => {
     if (e.touches.length === 2) {
         lastTouchDist = getTouchDist(e.touches);
+    } else if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - originX;
+        startY = e.touches[0].clientY - originY;
     }
 });
 
@@ -116,13 +123,40 @@ map.addEventListener('touchmove', e => {
         applyLimits();
         updateTransform();
         lastTouchDist = dist;
+    } else if (e.touches.length === 1 && isDragging) {
+        originX = e.touches[0].clientX - startX;
+        originY = e.touches[0].clientY - startY;
+        applyLimits();
+        updateTransform();
     }
 });
 
 map.addEventListener('touchend', e => {
     if (e.touches.length < 2) lastTouchDist = null;
+    if (e.touches.length === 0) isDragging = false;
 });
 
+// ----------------- DRAG -------------------
+map.addEventListener('mousedown', e => {
+    e.preventDefault();
+    isDragging = true;
+    startX = e.clientX - originX;
+    startY = e.clientY - originY;
+});
+
+document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    originX = e.clientX - startX;
+    originY = e.clientY - startY;
+    applyLimits();
+    updateTransform();
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+// ----------------- UTILITY -----------------
 function getTouchDist(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
