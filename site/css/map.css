@@ -10,7 +10,7 @@ body {
     padding: 0;
     background: #111;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'TrajanPro', serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,6 +50,7 @@ h1 {
     pointer-events: auto;
     user-select: none;
 }
+
 
 
 
