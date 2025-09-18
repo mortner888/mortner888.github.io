@@ -17,23 +17,25 @@ h1 {
 }
 
 .map-wrapper {
-    width: 70vw;        /* 70% della finestra */
-    max-width: 1200px;  /* larghezza massima */
-    height: auto;       /* altezza proporzionata */
-    overflow: hidden;   
+    width: 70vw;
+    max-width: 1200px;
+    height: 70vh;
+    overflow: hidden;
     margin: 20px auto;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #111;
 }
 
 #map {
-    width: 100%;          /* riempie il wrapper */
+    width: 100%;
     height: auto;
-    transform: scale(1);  /* scala iniziale */
     transform-origin: 0 0;
+    transform: scale(1);
     display: block;
-    cursor: default;
+    pointer-events: auto;
+    user-select: none;
 }
 

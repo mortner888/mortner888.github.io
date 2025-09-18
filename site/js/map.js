@@ -3,10 +3,24 @@ let scale = 1;
 let originX = 0;
 let originY = 0;
 
-map.style.transformOrigin = '0 0';
-map.style.position = 'relative';
-map.style.left = '0px';
-map.style.top = '0px';
+function applyLimits() {
+    const wrapper = map.parentElement.getBoundingClientRect();
+    const mapRect = {
+        width: map.naturalWidth,
+        height: map.naturalHeight
+    };
+
+    const scaledWidth = mapRect.width * scale;
+    const scaledHeight = mapRect.height * scale;
+
+    const minX = wrapper.width - scaledWidth;
+    const maxX = 0;
+    const minY = wrapper.height - scaledHeight;
+    const maxY = 0;
+
+    originX = Math.min(maxX, Math.max(minX, originX));
+    originY = Math.min(maxY, Math.max(minY, originY));
+}
 
 // Zoom con rotellina del mouse
 map.addEventListener('wheel', e => {
@@ -25,6 +39,7 @@ map.addEventListener('wheel', e => {
     originY = originY - mouseY * (scaleRatio - 1);
 
     scale = newScale;
+    applyLimits();
     map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
 });
 
@@ -52,6 +67,7 @@ map.addEventListener('touchmove', e => {
         originY = originY - (centerY * (scaleRatio - 1));
 
         scale = newScale;
+        applyLimits();
         map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
         lastTouchDist = dist;
     }
@@ -61,7 +77,6 @@ map.addEventListener('touchend', e => {
     if (e.touches.length < 2) lastTouchDist = null;
 });
 
-// Funzione helper per calcolare la distanza tra due tocchi
 function getTouchDist(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
