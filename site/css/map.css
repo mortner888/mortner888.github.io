@@ -1,31 +1,32 @@
-.map-container {
-    width: 100%; 
-    height: auto; 
-    position: relative;
-    overflow: visible; 
-    border: none; 
-    background: transparent; 
+body {
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: flex-start; 
-    flex-direction: column; 
+    flex-direction: column;
+    align-items: center;
 }
 
-.map-container h1 {
-    margin-bottom: 10px; 
-    text-align: center;
+h1 {
+    margin: 20px 0;
+    color: #fff;
 }
 
-.map-container img {
-    max-width: 100%;
-    height: auto; 
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+#map {
+    position: absolute; 
+    top: 0;
+    left: 0;
     cursor: grab;
     user-select: none;
     touch-action: none;
-    border-radius: 0; 
 }
-
-.map-container img.dragging {
+#map.dragging {
     cursor: grabbing;
 }
 
