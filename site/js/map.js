@@ -5,7 +5,7 @@ let startX, startY;
 let currentX = 0, currentY = 0;
 let scale = 1;
 let minScale = 1;
-let maxScale = 3;
+let maxScale = 2;
 
 map.addEventListener('mousedown', e => {
     isDragging = true;
@@ -26,16 +26,7 @@ document.addEventListener('mousemove', e => {
     map.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
 });
 
-map.addEventListener('wheel', e => {
-    e.preventDefault();
-    const zoomAmount = -e.deltaY * 0.001;
-    scale += zoomAmount;
-    if (scale < minScale) scale = minScale;
-    if (scale > maxScale) scale = maxScale;
-    map.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
-});
-
 map.addEventListener('dblclick', () => {
-    scale = scale < 2 ? 2 : 1;
+    scale = scale === 1 ? 1.5 : 1;
     map.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
 });
