@@ -3,15 +3,30 @@ let scale = 1;
 let originX = 0;
 let originY = 0;
 
-// Applica i limiti e centra la mappa se troppo piccola
+// Dimensioni iniziali dell'immagine renderizzata
+let baseWidth, baseHeight;
+
+window.addEventListener('load', () => {
+    const rect = map.getBoundingClientRect();
+    baseWidth = rect.width;
+    baseHeight = rect.height;
+    centerMap();
+    updateTransform();
+});
+
+// Centra la mappa inizialmente
+function centerMap() {
+    const wrapper = map.parentElement.getBoundingClientRect();
+    originX = (wrapper.width - baseWidth) / 2;
+    originY = (wrapper.height - baseHeight) / 2;
+}
+
+// Applica i limiti e centra se più piccola del wrapper
 function applyLimits() {
     const wrapper = map.parentElement.getBoundingClientRect();
-    const mapRect = map.getBoundingClientRect();
+    const scaledWidth = baseWidth * scale;
+    const scaledHeight = baseHeight * scale;
 
-    const scaledWidth = mapRect.width;
-    const scaledHeight = mapRect.height;
-
-    // Se la mappa è più piccola del wrapper, centrala
     if (scaledWidth < wrapper.width) {
         originX = (wrapper.width - scaledWidth) / 2;
     } else {
@@ -29,11 +44,14 @@ function applyLimits() {
     }
 }
 
+// Aggiorna il transform
+function updateTransform() {
+    map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+}
 
-// Zoom con rotellina del mouse
+// Zoom con rotellina
 map.addEventListener('wheel', e => {
     e.preventDefault();
-
     const rect = map.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
@@ -48,10 +66,10 @@ map.addEventListener('wheel', e => {
 
     scale = newScale;
     applyLimits();
-    map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+    updateTransform();
 });
 
-// Zoom touch (pinch) per mobile
+// Pinch touch
 let lastTouchDist = null;
 
 map.addEventListener('touchstart', e => {
@@ -76,7 +94,7 @@ map.addEventListener('touchmove', e => {
 
         scale = newScale;
         applyLimits();
-        map.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+        updateTransform();
         lastTouchDist = dist;
     }
 });
@@ -85,7 +103,6 @@ map.addEventListener('touchend', e => {
     if (e.touches.length < 2) lastTouchDist = null;
 });
 
-// Calcola la distanza tra due tocchi
 function getTouchDist(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
