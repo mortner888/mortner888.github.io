@@ -1,23 +1,3 @@
-
-  #map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    cursor: grab;
-    transition: transform 0.2s ease;
-    touch-action: none;
-  }
-
-  #map.dragging {
-    cursor: grabbing;
-    transition: none;
-  }
-</style>
-
-<div id="map">🌍</div>
-
-<script>
 const map = document.getElementById('map');
 
 let isDragging = false;
@@ -32,10 +12,12 @@ map.addEventListener('mousedown', e => {
     startY = e.clientY - offsetY;
     map.classList.add('dragging');
 });
+
 document.addEventListener('mouseup', () => {
     isDragging = false;
     map.classList.remove('dragging');
 });
+
 document.addEventListener('mousemove', e => {
     if (!isDragging) return;
     offsetX = e.clientX - startX;
@@ -82,6 +64,7 @@ map.addEventListener('touchstart', e => {
         map.classList.add('dragging');
     }
 });
+
 map.addEventListener('touchmove', e => {
     e.preventDefault();
     if (e.touches.length === 2) {
@@ -104,6 +87,7 @@ map.addEventListener('touchmove', e => {
         updateTransform();
     }
 });
+
 map.addEventListener('touchend', e => {
     if (e.touches.length < 2) lastTouchDist = null;
     if (e.touches.length === 0) isDragging = false;
@@ -125,4 +109,3 @@ function applyLimits() {
 function updateTransform() {
     map.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
 }
-
