@@ -1,6 +1,7 @@
 const map = document.getElementById('map');
 let scale = 1;
 
+// Zoom con rotellina
 map.addEventListener('wheel', e => {
     e.preventDefault();
     const zoomIntensity = 0.1;
