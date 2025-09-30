@@ -19,13 +19,14 @@
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Auto-adatta il numero di colonne con larghezza minima di 90px, max 1fr */
   gap: 15px;
   padding: 15px;
+  max-width: 100%; /
 }
 
 .boss-icon {
-  position: relative; 
+  position: relative;
   background-color: transparent;
   box-shadow: none;
   border-radius: 8px;
@@ -45,32 +46,31 @@
   margin: 0 auto;
 }
 
-.boss-icon .tooltip-text {
+.tooltip-text {
   position: absolute;
-  bottom: 8px;
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 1);
-  color: white;
+  background-color: rgba(0, 0, 0, 1); 
+  color: #fff;
   padding: 2px 6px;
   border-radius: 4px;
+  font-family: 'Trajan Pro', serif; 
   font-size: 11px;
-  font-family: 'Trajan Pro' , sans-serif;
-  opacity: 0;
+  opacity: 0; 
   pointer-events: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
+}
+
+.boss-icon:hover .tooltip-text {
+  opacity: 1; 
 }
 
 .boss-icon:hover {
   transform: scale(1.05);
 }
 
-.boss-icon:hover .tooltip-text {
-  opacity: 1;
-}
-
-  
 body { 
 	font-family: 'Trajan Pro' , sans-serif;
 	background: var(--bg); 
