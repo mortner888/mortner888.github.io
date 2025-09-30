@@ -19,36 +19,31 @@
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Auto-adatta il numero di colonne con larghezza minima di 90px, max 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* celle un po’ più larghe */
   gap: 15px;
   padding: 15px;
-  max-width: 100%; /
+  max-width: 100%;
 }
 
 .boss-icon {
   position: relative;
   background-color: transparent;
-  box-shadow: none;
   border-radius: 8px;
   padding: 8px;
-  transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
-  max-width: 60px;  /* aumenta un po’ per l’immagine */
-  /* rimuovi width: 100% */
+  max-width: 90px; /* dimensione massima più grande */
   box-sizing: border-box;
-  margin: 0 auto;  /* centra il blocco nella cella */
+  margin: 0 auto;
 }
 
 .boss-icon img {
-  width: 100%;
+  width: 100%;  /* prende tutta la larghezza del boss-icon */
+  max-width: 90px; /* non oltre 90px */
   height: auto;
   display: block;
   margin: 0 auto;
-  max-width: 60px; 
-  background-color: transparent;
 }
-
 .tooltip-text {
   position: absolute;
   bottom: 6px;
