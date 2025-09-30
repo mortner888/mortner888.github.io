@@ -38,8 +38,8 @@
   background-color: transparent;
   border: none;
   box-shadow: none;
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 12px;
+  max-height: 12px;
 }
 
 .boss-icon:hover {
