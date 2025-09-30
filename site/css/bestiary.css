@@ -27,6 +27,11 @@
 .boss-icon {
   background-color: transparent;
   box-shadow: none;
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
 }
 
 .boss-icon img {
