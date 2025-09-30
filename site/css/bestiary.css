@@ -34,20 +34,19 @@
   transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
-  max-width: 50px;  /* limite max larghezza */
-  width: 100%;       /* occupa il 100% della cella */
+  max-width: 60px;  /* aumenta un po’ per l’immagine */
+  /* rimuovi width: 100% */
   box-sizing: border-box;
+  margin: 0 auto;  /* centra il blocco nella cella */
 }
 
 .boss-icon img {
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  max-width: 50%;
-  width: 60px !important;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  max-width: 60px; 
+  background-color: transparent;
 }
 
 .tooltip-text {
