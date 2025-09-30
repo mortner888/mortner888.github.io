@@ -56,3 +56,9 @@ h1 {
 	font-family: 'TrajanPro', serif; 
 	
 }
+
+p {
+    text-align: center;
+    font-family: 'TrajanPro', serif;
+    color: var(--text)   
+}
