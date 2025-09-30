@@ -19,16 +19,17 @@
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 30px;
-  padding: 30px;
+  grid-template-columns: repeat(10, 1fr); /* 10 colonne fisse */
+  gap: 15px;
+  padding: 15px;
 }
 
 .boss-icon {
+  position: relative; /* necessario per posizionare la scritta */
   background-color: transparent;
   box-shadow: none;
   border-radius: 8px;
-  padding: 15px;
+  padding: 8px;
   transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
@@ -38,12 +39,36 @@
   background-color: transparent;
   border: none;
   box-shadow: none;
-  max-width: 120px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.boss-icon .tooltip-text {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .boss-icon:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
+
+.boss-icon:hover .tooltip-text {
+  opacity: 1;
+}
+
   
 body { 
 	font-family: Trajan Pro Regular, sans-serif;
