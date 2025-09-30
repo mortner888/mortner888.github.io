@@ -29,7 +29,7 @@ h1, p {
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* celle un po’ più larghe */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* celle un po’ più larghe */
   gap: 15px;
   padding: 15px;
 }
