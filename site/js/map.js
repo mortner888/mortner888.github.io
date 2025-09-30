@@ -3,7 +3,7 @@ let scale = 1;
 let originX = 0;
 let originY = 0;
 let isDragging = false;
-let startX = 0;
+let startX = 0; 
 let startY = 0;
 
 const MIN_SCALE = 0.8;
