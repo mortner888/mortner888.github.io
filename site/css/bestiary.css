@@ -19,13 +19,13 @@
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* 10 colonne fisse */
+  grid-template-columns: repeat(10, 1fr);
   gap: 15px;
   padding: 15px;
 }
 
 .boss-icon {
-  position: relative; /* necessario per posizionare la scritta */
+  position: relative; 
   background-color: transparent;
   box-shadow: none;
   border-radius: 8px;
@@ -50,11 +50,12 @@
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 1);
   color: white;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 11px;
+  font-family: 'Trajan Pro' , sans-serif;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
@@ -71,7 +72,7 @@
 
   
 body { 
-	font-family: Trajan Pro Regular, sans-serif;
+	font-family: 'Trajan Pro' , sans-serif;
 	background: var(--bg); 
 	margin: 20px; 
 	color: var(--text);
