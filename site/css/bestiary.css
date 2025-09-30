@@ -34,6 +34,9 @@
   transition: transform 0.2s ease;
   cursor: pointer;
   text-align: center;
+  max-width: 100px;  /* limite max larghezza */
+  width: 100%;       /* occupa il 100% della cella */
+  box-sizing: border-box;
 }
 
 .boss-icon img {
