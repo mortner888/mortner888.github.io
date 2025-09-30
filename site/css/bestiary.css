@@ -19,7 +19,7 @@
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Auto-adatta il numero di colonne con larghezza minima di 90px, max 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Auto-adatta il numero di colonne con larghezza minima di 90px, max 1fr */
   gap: 15px;
   padding: 15px;
   max-width: 100%; /
