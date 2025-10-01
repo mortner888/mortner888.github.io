@@ -51,12 +51,11 @@ hr {
   max-width: 450px;
   margin: 20px auto 15px;
   padding: 0 20px;
-  position: relative;
 }
 
 .search-box {
   width: 100%;
-  padding: 16px 24px 16px 50px; /* padding sinistra aumentato per l'icona */
+  padding: 16px 24px;
   font-family: 'TrajanPro', sans-serif;
   font-size: 16px;
   background: #0f0f12;
@@ -75,18 +74,6 @@ hr {
 
 .search-box::placeholder {
   color: rgba(245, 245, 245, 0.4);
-}
-
-/* Icona di ricerca */
-.search-container::before {
-  content: "🔍";
-  position: absolute;
-  left: 36px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 /* Griglia boss migliorata con gap ridotto */
