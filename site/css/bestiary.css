@@ -79,3 +79,35 @@ h1, p {
   transform: scale(1.08);
 
 }
+
+/* Barra di ricerca */
+.search-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 12px 20px;
+  font-family: 'TrajanPro', sans-serif;
+  font-size: 16px;
+  background: var(--overlay);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+  border-color: var(--secondary);
+}
+
+.search-box::placeholder {
+  color: rgba(245, 245, 245, 0.5);
+}
+
+.boss-icon.hidden {
+  display: none;
+}
