@@ -46,7 +46,7 @@ hr {
   opacity: 0.5;
 }
 
-/* Barra di ricerca migliorata con icona */
+/* Barra di ricerca migliorata */
 .search-container {
   max-width: 450px;
   margin: 20px auto 15px;
@@ -76,17 +76,17 @@ hr {
   color: rgba(245, 245, 245, 0.4);
 }
 
-/* Griglia boss migliorata con gap ridotto */
+/* Griglia boss migliorata */
 .boss-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 15px 20px; /* gap verticale ridotto */
+  gap: 20px;
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Container boss con sfondo più visibile e bordo */
+/* Container boss con altezza fissa */
 .boss-icon {
   position: relative;
   border-radius: 8px;
@@ -99,9 +99,8 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  background: rgba(44, 42, 54, 0.5);
-  border: 1px solid rgba(230, 57, 70, 0.2);
+  transition: transform 0.2s ease;
+  background: rgba(44, 42, 54, 0.3);
 }
 
 /* Immagini allineate */
@@ -119,17 +118,16 @@ hr {
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.95); 
+  background-color: rgba(0, 0, 0, 0.9); 
   color: #fff;
-  padding: 5px 10px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 11px;
   opacity: 0; 
   pointer-events: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
   z-index: 10;
-  border: 1px solid rgba(230, 57, 70, 0.3);
 }
 
 .boss-icon:hover .tooltip-text {
@@ -138,9 +136,7 @@ hr {
 
 .boss-icon:hover {
   transform: scale(1.08);
-  background: rgba(44, 42, 54, 0.8);
-  border-color: rgba(230, 57, 70, 0.5);
-  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+  background: rgba(44, 42, 54, 0.6);
 }
 
 /* Animazioni per la ricerca */
