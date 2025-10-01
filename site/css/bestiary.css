@@ -49,34 +49,33 @@ hr {
 /* Contenitore della barra centrato */
 .search-container {
   max-width: 450px;
-  margin: 20px auto 15px; /* auto = centrato */
+  margin: 20px auto 15px; 
   padding: 0 20px;
   text-align: center;
 }
 
-/* Barra di ricerca */
-.search-box {
-  width: 100%;
-  padding: 16px 24px; /* tolto spazio extra per lente */
-  font-family: 'TrajanPro', sans-serif;
-  font-size: 16px;
-  background: #0f0f12;
-  border: 2px solid transparent;
-  border-radius: 16px;
-  color: var(--text);
-  outline: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
-}
 
-.search-box:focus {
-  border-color: var(--accent); /* bordino rosso al focus */
-  box-shadow: 0 6px 16px rgba(230, 57, 70, 0.4);
-  transform: translateY(-2px);
+.search-box {
+  display: block;
+  margin: 20px auto;      
+  padding: 10px 15px;
+  width: 300px;           
+  max-width: 80%;          
+  background: var(--overlay);
+  border: none;
+  border-radius: 12px;
+  font-family: 'TrajanPro', serif;
+  font-size: 14px;
+  color: var(--text);
+  text-align: center;
+
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.4); 
 }
 
 .search-box::placeholder {
-  color: rgba(245, 245, 245, 0.4);
+  color: rgba(245, 245, 245, 0.6);
+  font-style: italic;
+  letter-spacing: 0.5px;
 }
 
 /* Griglia boss */
