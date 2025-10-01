@@ -36,7 +36,7 @@ p {
   font-size: 18px;
 }
 
-/* Linea orizzontale più visibile */
+/* Linea orizzontale */
 hr {
   border: none;
   height: 2px;
@@ -46,20 +46,22 @@ hr {
   opacity: 0.5;
 }
 
-/* Barra di ricerca migliorata */
+/* Contenitore della barra centrato */
 .search-container {
   max-width: 450px;
-  margin: 20px auto 15px;
+  margin: 20px auto 15px; /* auto = centrato */
   padding: 0 20px;
+  text-align: center;
 }
 
+/* Barra di ricerca */
 .search-box {
   width: 100%;
-  padding: 16px 24px;
+  padding: 16px 24px; /* tolto spazio extra per lente */
   font-family: 'TrajanPro', sans-serif;
   font-size: 16px;
   background: #0f0f12;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 16px;
   color: var(--text);
   outline: none;
@@ -68,6 +70,7 @@ hr {
 }
 
 .search-box:focus {
+  border-color: var(--accent); /* bordino rosso al focus */
   box-shadow: 0 6px 16px rgba(230, 57, 70, 0.4);
   transform: translateY(-2px);
 }
@@ -76,17 +79,17 @@ hr {
   color: rgba(245, 245, 245, 0.4);
 }
 
-/* Griglia boss migliorata */
+/* Griglia boss */
 .boss-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 20px;
+  gap: 15px 20px;
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Container boss con altezza fissa */
+/* Box singolo boss */
 .boss-icon {
   position: relative;
   border-radius: 8px;
@@ -99,11 +102,12 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
-  background: rgba(44, 42, 54, 0.3);
+  transition: all 0.2s ease;
+  background: rgba(44, 42, 54, 0.5);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  animation: fadeIn 0.3s ease;
 }
 
-/* Immagini allineate */
 .boss-icon img {
   max-width: 100%;
   max-height: 100%;
@@ -112,22 +116,23 @@ hr {
   margin: 0 auto;
 }
 
-/* Tooltip migliorato */
+/* Tooltip */
 .tooltip-text {
   position: absolute;
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.9); 
+  background-color: rgba(0, 0, 0, 0.95); 
   color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 5px 10px;
+  border-radius: 6px;
   font-size: 11px;
   opacity: 0; 
   pointer-events: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
   z-index: 10;
+  border: 1px solid rgba(230, 57, 70, 0.3);
 }
 
 .boss-icon:hover .tooltip-text {
@@ -136,10 +141,12 @@ hr {
 
 .boss-icon:hover {
   transform: scale(1.08);
-  background: rgba(44, 42, 54, 0.6);
+  background: rgba(44, 42, 54, 0.8);
+  border-color: rgba(230, 57, 70, 0.5);
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
-/* Animazioni per la ricerca */
+/* Animazioni */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -160,10 +167,6 @@ hr {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.boss-icon {
-  animation: fadeIn 0.3s ease;
 }
 
 .boss-icon.hidden {
