@@ -62,19 +62,26 @@ hr {
   width: 300px;           
   max-width: 80%;          
   background: var(--overlay);
-  border: none;
+  border: none; /* inizialmente senza bordo */
   border-radius: 12px;
   font-family: 'TrajanPro', serif;
   font-size: 14px;
   color: var(--text);
   text-align: center;
+  outline: none; 
 
   box-shadow: 0 0 8px rgba(230, 57, 70, 0.4); 
+  transition: all 0.3s ease; 
+}
+
+.search-box:focus {
+  border: 2px solid var(--accent); 
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.7); 
 }
 
 .search-box::placeholder {
   color: rgba(245, 245, 245, 0.6);
-  font-style: italic;
+  font-style: 'TrajaPro';
   letter-spacing: 0.5px;
 }
 
