@@ -46,16 +46,17 @@ hr {
   opacity: 0.5;
 }
 
-/* Barra di ricerca migliorata */
+/* Barra di ricerca migliorata con icona */
 .search-container {
   max-width: 450px;
   margin: 20px auto 15px;
   padding: 0 20px;
+  position: relative;
 }
 
 .search-box {
   width: 100%;
-  padding: 16px 24px;
+  padding: 16px 24px 16px 50px; /* padding sinistra aumentato per l'icona */
   font-family: 'TrajanPro', sans-serif;
   font-size: 16px;
   background: #0f0f12;
@@ -76,17 +77,29 @@ hr {
   color: rgba(245, 245, 245, 0.4);
 }
 
-/* Griglia boss migliorata */
+/* Icona di ricerca */
+.search-container::before {
+  content: "🔍";
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Griglia boss migliorata con gap ridotto */
 .boss-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 20px;
+  gap: 15px 20px; /* gap verticale ridotto */
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Container boss con altezza fissa */
+/* Container boss con sfondo più visibile e bordo */
 .boss-icon {
   position: relative;
   border-radius: 8px;
@@ -99,8 +112,9 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
-  background: rgba(44, 42, 54, 0.3);
+  transition: all 0.2s ease;
+  background: rgba(44, 42, 54, 0.5);
+  border: 1px solid rgba(230, 57, 70, 0.2);
 }
 
 /* Immagini allineate */
@@ -118,16 +132,17 @@ hr {
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.9); 
+  background-color: rgba(0, 0, 0, 0.95); 
   color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 5px 10px;
+  border-radius: 6px;
   font-size: 11px;
   opacity: 0; 
   pointer-events: none;
   transition: opacity 0.2s ease;
   white-space: nowrap;
   z-index: 10;
+  border: 1px solid rgba(230, 57, 70, 0.3);
 }
 
 .boss-icon:hover .tooltip-text {
@@ -136,7 +151,9 @@ hr {
 
 .boss-icon:hover {
   transform: scale(1.08);
-  background: rgba(44, 42, 54, 0.6);
+  background: rgba(44, 42, 54, 0.8);
+  border-color: rgba(230, 57, 70, 0.5);
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
 /* Animazioni per la ricerca */
