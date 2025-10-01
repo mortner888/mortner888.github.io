@@ -29,7 +29,7 @@ h1, p {
 
 .boss-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* celle più larghe */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 15px;
   padding: 15px;
 }
@@ -46,7 +46,9 @@ h1, p {
 }
 
 .boss-icon img {
-  width: 120px;   
+  width: 120px;
+  justify-content: center;
+  align-items: center;
   height: auto;
   display: block;
   margin: 0 auto;
