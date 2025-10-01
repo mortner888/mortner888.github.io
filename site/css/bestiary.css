@@ -21,77 +21,43 @@ body {
   color: var(--text);
 }  
 
-h1, p { 
+h1 { 
   text-align: center;
   font-family: 'TrajanPro', serif; 
   color: var(--text);
+  margin-bottom: 15px;
 }
 
-.boss-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 15px;
-  padding: 15px;
-}
-
-.boss-icon {
-  position: relative;
-  border-radius: 8px;
-  padding: 8px;
-  cursor: pointer;
+p { 
   text-align: center;
-  width: 120px;
-  height: 120px;  /* aggiungi altezza fissa */
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
+  font-family: 'TrajanPro', serif; 
+  color: var(--text);
+  margin: 15px 0;
+  font-size: 18px;
 }
 
-.boss-icon img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+/* Linea orizzontale più visibile */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  margin: 20px auto;
+  max-width: 80%;
+  opacity: 0.5;
 }
 
-.tooltip-text {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.9); 
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 11px;
-  opacity: 0; 
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-.boss-icon:hover .tooltip-text {
-  opacity: 1; 
-}
-
-.boss-icon:hover {
-  transform: scale(1.08);
-
-}
-
-/* Barra di ricerca */
+/* Barra di ricerca migliorata */
 .search-container {
-  max-width: 600px;
-  margin: 30px auto;
+  max-width: 450px;
+  margin: 20px auto 15px;
   padding: 0 20px;
 }
 
 .search-box {
   width: 100%;
-  padding: 18px 24px;
+  padding: 16px 24px;
   font-family: 'TrajanPro', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   background: #0f0f12;
   border: none;
   border-radius: 16px;
@@ -110,37 +76,96 @@ h1, p {
   color: rgba(245, 245, 245, 0.4);
 }
 
-.boss-icon.hidden {
-  display: none;
+/* Griglia boss migliorata */
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Container boss con altezza fissa */
+.boss-icon {
+  position: relative;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  width: 130px;
+  height: 140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  background: rgba(44, 42, 54, 0.3);
+}
+
+/* Immagini allineate */
+.boss-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tooltip migliorato */
+.tooltip-text {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9); 
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.boss-icon:hover .tooltip-text {
+  opacity: 1; 
+}
+
+.boss-icon:hover {
+  transform: scale(1.08);
+  background: rgba(44, 42, 54, 0.6);
 }
 
 /* Animazioni per la ricerca */
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.8);
-    }
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .boss-icon {
-    animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 .boss-icon.hidden {
-    display: none;
+  display: none;
 }
