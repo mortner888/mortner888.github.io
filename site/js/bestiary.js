@@ -30,10 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Dati dei boss (aggiungi descrizioni e location per ogni boss)
     const bossData = {
-const bossData = {
         'Bell Beast': {
             name: 'Bell Beast',
-            image: 'img/bell-beast.png', // sostituisci col percorso reale
+            image: 'img/bell-beast.png',
             description: 'A fearsome creature that guards the ancient bells.',
             location: 'Found in the Bell Tower area.'
         },
