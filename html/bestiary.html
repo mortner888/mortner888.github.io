@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestiary</title>
     <link rel="stylesheet" href="../site/css/bestiary.css">
-    <link rel="icon" href="../site/image/favicon.png" type="img/png">
+    <link rel="icon" href="../site/image/favicon.png" type="image/png">
     <script src="../site/js/bestiary.js" defer></script>
 </head>
 <body>
@@ -244,17 +246,21 @@
         </div>
     </section>
 
-<!-- Pop-up overlay -->
+    <!-- Pop-up overlay -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
-            <button class="popup-close" id="popupClose">&times;</button>
-            <img class="popup-image" id="popupImage" src="" alt="">
+            <div class="popup-close" id="popupClose"></div>
+            <div class="popup-image-container">
+                <img class="popup-image" id="popupImage" src="" alt="Boss">
+            </div>
             <h2 class="popup-title" id="popupTitle"></h2>
-            <div class="popup-info">
-                <h3>Description</h3>
-                <p class="popup-description" id="popupDescription">Boss description will appear here.</p>
-                <h3>Location</h3>
-                <p class="popup-location" id="popupLocation">Boss location will appear here.</p>
+            <div class="popup-section">
+                <div class="popup-section-title">Description</div>
+                <p class="popup-description" id="popupDescription"></p>
+            </div>
+            <div class="popup-section">
+                <div class="popup-section-title">Location</div>
+                <p class="popup-location" id="popupLocation"></p>
             </div>
         </div>
     </div>
