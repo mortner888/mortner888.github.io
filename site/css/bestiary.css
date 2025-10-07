@@ -166,6 +166,7 @@ hr {
 /* Popup overlay */
 .popup-overlay {
     position: fixed;
+    display: none;
     top: 0;
     left: 0;
     width: 100vw;
@@ -177,6 +178,10 @@ hr {
     z-index: 1000;
     overflow-y: auto; /* Permette lo scroll verticale */
     padding: 2rem;
+}
+
+.popup-overlay.active {
+  display: flex; /* mostra il popup quando ha la classe 'active' */
 }
 
 /* Popup content */
