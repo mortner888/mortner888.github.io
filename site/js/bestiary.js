@@ -1,55 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const popupOverlay = document.getElementById('popupOverlay');
-  const popupClose = document.getElementById('popupClose');
-  const popupImage = document.getElementById('popupImage');
-  const popupTitle = document.getElementById('popupTitle');
-  const popupDescription = document.getElementById('popupDescription');
-  const popupLocation = document.getElementById('popupLocation');
+// Gestione pop-up
+document.addEventListener('DOMContentLoaded', function() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupClose = document.getElementById('popupClose');
+    const popupImage = document.getElementById('popupImage');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupDescription = document.getElementById('popupDescription');
+    const popupLocation = document.getElementById('popupLocation');
+    const bossIcons = document.querySelectorAll('.boss-icon');
 
-  // Esempio oggetto dati boss, devi adattarlo al tuo
-  const bossData = {
-    'bell-beast': {
-      title: 'Bell Beast',
-      description: 'Descrizione di Bell Beast...',
-      location: 'Locazione di Bell Beast',
-      image: '../site/image/bestiary/bell-beast.png'
-    },
-    'bell-eater': {
-      title: 'Bell Eater',
-      description: 'Descrizione di Bell Eater...',
-      location: 'Locazione di Bell Eater',
-      image: '../site/image/bestiary/bell-eater.png'
-    },
-    // aggiungi tutti i boss...
-  };
+    // Dati dei boss (da compilare con le tue informazioni)
+    const bossData = {
+        'Bell Beast': {
+            description: 'A fearsome creature that guards the ancient bells.',
+            location: 'Found in the Bell Tower area.'
+        },
+        'Bell Eater': {
+            description: 'A massive beast that consumes bells for sustenance.',
+            location: 'Deep within the Bell Sanctum.'
+        },
+        // Aggiungi qui tutti gli altri boss...
+    };
 
-  // Prendi tutte le boss-icon e aggiungi click listener
-  document.querySelectorAll('.boss-icon').forEach(icon => {
-    icon.addEventListener('click', () => {
-      const bossId = icon.querySelector('img').alt.toLowerCase().replace(/ /g, '-');
-      const boss = bossData[bossId];
-
-      if (boss) {
-        popupTitle.textContent = boss.title;
-        popupDescription.textContent = boss.description;
-        popupLocation.textContent = boss.location;
-        popupImage.src = boss.image;
-        popupImage.alt = boss.title;
-
-        popupOverlay.classList.add('active'); // mostra popup
-      }
+    // Apri pop-up quando clicchi su un boss
+    bossIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const bossName = this.querySelector('.tooltip-text').textContent;
+            const bossImg = this.querySelector('img').src;
+            
+            popupImage.src = bossImg;
+            popupTitle.textContent = bossName;
+            
+            // Carica dati del boss se esistono
+            if (bossData[bossName]) {
+                popupDescription.textContent = bossData[bossName].description;
+                popupLocation.textContent = bossData[bossName].location;
+            } else {
+                popupDescription.textContent = 'Description coming soon...';
+                popupLocation.textContent = 'Location coming soon...';
+            }
+            
+            popupOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
+        });
     });
-  });
 
-  // Chiudi popup al click sulla X
-  popupClose.addEventListener('click', () => {
-    popupOverlay.classList.remove('active');
-  });
-
-  // Chiudi popup cliccando fuori dal contenuto
-  popupOverlay.addEventListener('click', (e) => {
-    if (e.target === popupOverlay) {
-      popupOverlay.classList.remove('active');
+    // Chiudi pop-up
+    function closePopup() {
+        popupOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Riabilita scroll
     }
-  });
+
+    popupClose.addEventListener('click', closePopup);
+    
+    // Chiudi cliccando fuori dal pop-up
+    popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+            closePopup();
+        }
+    });
+
+    // Chiudi con tasto ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+            closePopup();
+        }
+    });
 });
