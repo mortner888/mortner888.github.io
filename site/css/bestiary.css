@@ -91,6 +91,7 @@ hr {
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
+  justify-content: start;
 }
 
 /* Box singolo boss */
