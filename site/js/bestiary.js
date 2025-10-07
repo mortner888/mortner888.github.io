@@ -1,43 +1,49 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ===== SEARCHBAR FUNCTIONALITY =====
-    const searchBox = document.getElementById('bossSearch');
-    
-    if (searchBox) {
-        searchBox.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            const bossIcons = document.querySelectorAll('.boss-icon');
-            
-            bossIcons.forEach(boss => {
-                const bossName = boss.querySelector('.tooltip-text').textContent.toLowerCase();
-                
-                if (bossName.includes(searchTerm)) {
-                    boss.classList.remove('hidden');
-                } else {
-                    boss.classList.add('hidden');
-                }
-            });
-        });
-    }
+  // ===== SEARCHBAR FUNCTIONALITY =====
+  const searchBox = document.getElementById('bossSearch');
 
-    // ===== POPUP FUNCTIONALITY =====
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupClose = document.getElementById('popupClose');
-    const popupImage = document.getElementById('popupImage');
-    const popupTitle = document.getElementById('popupTitle');
-    const popupDescription = document.getElementById('popupDescription');
-    const popupLocation = document.getElementById('popupLocation');
-    const bossIcons = document.querySelectorAll('.boss-icon');
+  if (searchBox) {
+    searchBox.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase().trim();
+      const bossIcons = document.querySelectorAll('.boss-icon');
+
+      bossIcons.forEach(boss => {
+        const bossName = boss.querySelector('.tooltip-text').textContent.toLowerCase();
+
+        if (bossName.includes(searchTerm)) {
+          boss.classList.remove('hidden');
+        } else {
+          boss.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  // ===== POPUP FUNCTIONALITY =====
+  const popupOverlay = document.querySelector('.popup-overlay');
+  const popupCloseBtn = document.querySelector('.popup-close');
+  const popupTitle = popupOverlay.querySelector('.popup-title');
+  const popupImage = popupOverlay.querySelector('.popup-image');
+  const popupDescription = popupOverlay.querySelector('.popup-info p.description');
+  const popupLocation = popupOverlay.querySelector('.popup-info p.location');
+  const bossIcons = document.querySelectorAll('.boss-icon');
 
     // Dati dei boss (aggiungi descrizioni e location per ogni boss)
     const bossData = {
+const bossData = {
         'Bell Beast': {
+            name: 'Bell Beast',
+            image: 'img/bell-beast.png', // sostituisci col percorso reale
             description: 'A fearsome creature that guards the ancient bells.',
             location: 'Found in the Bell Tower area.'
         },
         'Bell Eater': {
+            name: 'Bell Eater',
+            image: 'img/bell-eater.png',
             description: 'A massive beast that consumes bells for sustenance.',
             location: 'Deep within the Bell Sanctum.'
         },
+
         'Broadmother': {
             description: 'The matriarch of her brood, commanding legions.',
             location: 'Deepnest Caverns.'
@@ -208,48 +214,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Apri pop-up quando clicchi su un boss
-    bossIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            const bossName = this.querySelector('.tooltip-text').textContent;
-            const bossImg = this.querySelector('img').src;
-            
-            popupImage.src = bossImg;
-            popupTitle.textContent = bossName;
-            
-            // Carica dati del boss se esistono
-            if (bossData[bossName]) {
-                popupDescription.textContent = bossData[bossName].description;
-                popupLocation.textContent = bossData[bossName].location;
-            } else {
-                popupDescription.textContent = 'Description coming soon...';
-                popupLocation.textContent = 'Location coming soon...';
-            }
-            
-            popupOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
+  bossIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const bossId = icon.dataset.id; // data-id="Bell Beast" per esempio
+      const boss = bossData[bossId];
 
-    // Chiudi pop-up
-    function closePopup() {
-        popupOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+      if (boss) {
+        popupTitle.textContent = boss.name;
+        popupImage.src = boss.image;
+        popupImage.alt = boss.name;
+        popupDescription.textContent = boss.description;
+        popupLocation.textContent = boss.location;
+
+        popupOverlay.classList.add('active');
+      }
+    });
+  });
+
+  // Chiudi popup cliccando sulla X
+  popupCloseBtn.addEventListener('click', () => {
+    popupOverlay.classList.remove('active');
+  });
+
+  // Chiudi popup cliccando fuori dal contenuto
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) {
+      popupOverlay.classList.remove('active');
     }
-
-    popupClose.addEventListener('click', closePopup);
-    
-    // Chiudi cliccando fuori dal pop-up
-    popupOverlay.addEventListener('click', function(e) {
-        if (e.target === popupOverlay) {
-            closePopup();
-        }
-    });
-
-    // Chiudi con tasto ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-            closePopup();
-        }
-    });
+  });
 });
