@@ -65,3 +65,115 @@
 	cursor: pointer;
 
   }
+footer {
+  background: linear-gradient(135deg, rgba(27, 27, 31, 0.95) 0%, rgba(44, 42, 54, 0.95) 100%);
+  border-top: 2px solid rgba(230, 57, 70, 0.3);
+  padding: 30px 20px;
+  margin-top: 50px;
+  text-align: center;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-family: 'TrajanPro', serif;
+  font-size: 14px;
+  color: rgba(245, 245, 245, 0.7);
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: rgba(245, 245, 245, 0.5);
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(230, 57, 70, 0.2);
+}
+
+.footer-link {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
+}
+nav {
+  background: linear-gradient(135deg, rgba(44, 42, 54, 0.95) 0%, rgba(27, 27, 31, 0.95) 100%);
+  border-bottom: 2px solid rgba(230, 57, 70, 0.3);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 18px 30px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'TrajanPro', serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+}
+
+nav a:hover::before {
+  width: 80%;
+}
+
+nav a.active {
+  color: var(--accent);
+  background: rgba(230, 57, 70, 0.1);
+}
+
+nav a.active::before {
+  width: 80%;
+}
+
+.main-content {
+  padding: 20px;
+  min-height: calc(100vh - 200px);
+}
