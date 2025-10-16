@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const bossIcons = document.querySelectorAll('.boss-icon');
   const searchBox = document.querySelector('.search-box');
 
-  // Dati dei boss (puoi aggiungere qui tutte le info)
+ //---dati---
   const bossData = {
     'Bell Beast': {
       description: 'A fearsome creature that guards the ancient bells.',
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
       description: 'A massive beast that consumes bells for sustenance.',
       location: 'Deep within the Bell Sanctum.'
     },
-    // ...aggiungi altri boss qui
+  
   };
 
   // ---- POP-UP ----
