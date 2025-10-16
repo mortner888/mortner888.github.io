@@ -23,6 +23,8 @@
 	background: var(--bg); 
 	margin: 20px; 
 	color: var(--text);
+	margin: 0;
+    padding: 0;
   }  
   
   h1 { 
